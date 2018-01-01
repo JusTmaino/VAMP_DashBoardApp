@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">VAMP Dashboard</string>
+    <string name="title_activity_app">AppActivity</string>
+
+    <!-- .LoginActivity -->
+    <string name="login">AUTHENTIFICATION</string>
+    <string name="connection">CONNEXION</string>
+
+    <!-- .AppActivity -->
+    <string name="tab_home">Accueil</string>
+    <string name="tab_controls">Contrôles</string>
+    <string name="tab_map">Map</string>
+    <string name="tab_profile">Profil</string>
+    <string name="action_log">Connexion</string>
+
+    <string name="tab_search">Rechercher</string>
+    <string name="tab_navig">Navigation</string>
+    <string name="tab_temperature">Themperature</string>
+    <string name="tab_music">Music</string>
+    <string name="car_view">photo_voiture</string>
+
+    <!-- .HomeFragment -->
+    <string name="home_lock">Verrouillage des portes</string>
+    <string name="home_unlock">Déverrouillage des portes</string>
+    <string name="home_start">Démarrage du véhicule </string>
+    <string name="home_stop">Arrêt du véhicule</string>
+    <string name="home_undefined">non défini</string>
+    <string name="home_registerNumber">Immatriculation</string>
+    <string name="home_brand">Marque</string>
+    <string name="home_model">Modèle</string>
+    <string name="home_charge">Taux de charge</string>
+
+    <!-- .ControlsFragment -->
+    <string name="controls_commands">Commandes</string>
+    <string name="controls_commands_start">Démarrer la voiture </string>
+    <string name="controls_commands_lock">Déverrouillage centralisée des portes </string>
+    <string name="controls_commands_open_windows">Ouverture des vitres  </string>
+    <string name="controls_commands_airconditionning">Climatisation </string>
+    <string name="controls_commands_temperature">Temperature</string>
+    <string name="controls_preferences">Préférences </string>
+    <string name="controls_preferences_volume">Volume </string>
+    <string name="controls_preferences_playlist">Playlist </string>
+
+    <!-- .ProfileFragment -->
+    <string name="profile_firstname">Prénom</string>
+    <string name="profile_lastname">NOM</string>
+    <string name="profile_email">e-mail</string>
+    <string name="profile_tel1">Tel 1</string>
+    <string name="profile_tel2">Tel 2</string>
+    <string name="profile_button_save">ENREGISTRER</string>
+
+
+
+
+
+</resources>

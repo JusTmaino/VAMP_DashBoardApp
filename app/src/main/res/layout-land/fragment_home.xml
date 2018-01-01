@@ -1,0 +1,51 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.mbds.vamp.dashboardapp.controllers.fragments.HomeFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal" >
+
+        <fragment
+        android:id="@+id/listFragment"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:layout_marginTop="0dp"
+        class="com.mbds.vamp.dashboardapp.controllers.fragments.CarFragment" ></fragment>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="0dp"
+            android:orientation="vertical">
+             <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                >
+                <fragment
+                    android:id="@+id/mapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_weight="2"
+                    android:layout_height="500dp"
+                    class="com.mbds.vamp.dashboardapp.controllers.fragments.LocationFragment" >
+                    <!-- Preview: layout=@layout/details -->
+                </fragment>
+            </FrameLayout>
+            <fragment
+                android:id="@+id/playlistFragment"
+                android:layout_width="match_parent"
+                android:layout_weight="2"
+                android:layout_height="200dp"
+                class="com.mbds.vamp.dashboardapp.controllers.fragments.PlaylistFragment" >
+
+            </fragment>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
