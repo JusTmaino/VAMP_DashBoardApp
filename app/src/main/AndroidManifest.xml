@@ -1,16 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mbds.vamp.dashboardapp">
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true"/>
 
-    <uses-permission android:name="android.permission.INTERNET" ></uses-permission>
+    <permission
+        android:name="fr.rolandl.blog_itineraire.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature"/>
+
+    <uses-permission android:name="fr.rolandl.blog_itineraire.permission.MAPS_RECEIVE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="your.application.package.permission.MAPS_RECEIVE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <permission android:name="android.permission.MEDIA_CONTENT_CONTROL" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
     <uses-feature
         android:glEsVersion="0x00020000"
         android:required="true"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -18,7 +34,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBLQ9bywgCv14oEe3u_kP6ffKiiU_xlAB8"/>
@@ -38,6 +53,7 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="landscape"
             android:configChanges="orientation"></activity>
+        <service android:name="com.mbds.vamp.dashboardapp.services.MediaPlayerService" />
     </application>
 
 </manifest>

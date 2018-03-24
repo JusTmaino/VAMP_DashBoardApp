@@ -1,20 +1,20 @@
 package com.mbds.vamp.dashboardapp.model;
 
+import java.util.Arrays;
+
 public class Car {
 
     // Description
+    String registerNumber;
     String brand;
     String model;
-    int registration;
-    int nb_places;
+    int seatCount;
+    String avatar;
 
     // State
     int charge;
-    int temperature_ext;
     boolean locked;
-    boolean started;
     Location currentLocation;
-    Media honkSound;
 
     // Users
     User [] allowedUsers;
@@ -23,16 +23,13 @@ public class Car {
     public Car() {}
 
 
-    // Functionalities
-    public void startCar() {}
-    public void stopCar() {}
-    public void openCar() {}
-    public void closeCar() {}
-    public void openLights() {}
-    public void closeLights() {}
-    public void setTemperatureClim(int degres) {}
-    public void honk() {}
+    public String getRegisterNumber() {
+        return registerNumber;
+    }
 
+    public void setRegisterNumber(String registerNumber) {
+        this.registerNumber = registerNumber;
+    }
 
     public String getBrand() {
         return brand;
@@ -50,20 +47,12 @@ public class Car {
         this.model = model;
     }
 
-    public int getRegistration() {
-        return registration;
+    public String getAvatar() {
+        return avatar;
     }
 
-    public void setRegistration(int registration) {
-        this.registration = registration;
-    }
-
-    public int getNb_places() {
-        return nb_places;
-    }
-
-    public void setNb_places(int nb_places) {
-        this.nb_places = nb_places;
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public int getCharge() {
@@ -74,12 +63,28 @@ public class Car {
         this.charge = charge;
     }
 
-    public int getTemperature_ext() {
-        return temperature_ext;
+    public Location getCurrentLocation() {
+        return currentLocation;
     }
 
-    public void setTemperature_ext(int temperature_ext) {
-        this.temperature_ext = temperature_ext;
+    public void setCurrentLocation(Location currentLocation) {
+        this.currentLocation = currentLocation;
+    }
+
+    public User[] getAllowedUsers() {
+        return allowedUsers;
+    }
+
+    public void setAllowedUsers(User[] allowedUsers) {
+        this.allowedUsers = allowedUsers;
+    }
+
+    public int getSeatCount() {
+        return seatCount;
+    }
+
+    public void setSeatCount(int seatCount) {
+        this.seatCount = seatCount;
     }
 
     public boolean isLocked() {
@@ -90,25 +95,8 @@ public class Car {
         this.locked = locked;
     }
 
-    public boolean isStarted() { return started; }
-
-    public void setStarted(boolean started) { this.started = started; }
-
-    public Location getCurrentLocation() {
-        return currentLocation;
+    @Override
+    public String toString() {
+        return brand + " " + model;
     }
-
-    public void setCurrentLocation(Location currentLocation) { this.currentLocation = currentLocation; }
-
-    public User[] getAllowedUsers() {
-        return allowedUsers;
-    }
-
-    public void setAllowedUsers(User[] allowedUsers) {
-        this.allowedUsers = allowedUsers;
-    }
-
-    public Media getHonkSound() { return honkSound; }
-
-    public void setHonkSound(Media honkSound) { this.honkSound = honkSound; }
 }

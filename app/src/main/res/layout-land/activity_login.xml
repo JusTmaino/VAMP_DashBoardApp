@@ -29,24 +29,24 @@
         android:id="@+id/login_text" />
 
     <EditText
-        android:inputType="textEmailAddress"
+        android:id="@+id/login_username"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
         android:layout_gravity="center_horizontal"
-        android:textColor="@color/colorWhite"
+        android:layout_marginBottom="10dp"
         android:ems="10"
-        android:id="@+id/login_email"/>
+        android:inputType="textEmailAddress"
+        android:textColor="@color/colorAccent" />
 
     <EditText
-        android:inputType="numberPassword"
-        android:layout_marginBottom="20dp"
+        android:id="@+id/login_password"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:textColor="@color/colorPrimary"
+        android:layout_marginBottom="20dp"
         android:ems="10"
-        android:id="@+id/login_password" />
+        android:inputType="text"
+        android:textColor="@color/colorAccent" />
 
     <Button
         android:text="@string/connection"
@@ -57,6 +57,10 @@
         android:textColor="@color/colorPrimary"
         android:background="@color/colorWhite"
         android:id="@+id/login_button" />
-
+    <ListView
+        android:id="@+id/List"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+    </ListView>
 
 </LinearLayout>

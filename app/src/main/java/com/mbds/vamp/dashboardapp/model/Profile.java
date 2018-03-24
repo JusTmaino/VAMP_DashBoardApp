@@ -11,7 +11,7 @@ public class Profile {
 
 
     public Profile() {}
-    
+
 
     public int getPreferedTemperature() {
         return preferedTemperature;

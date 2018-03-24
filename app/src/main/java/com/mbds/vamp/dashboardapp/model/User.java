@@ -1,44 +1,55 @@
 package com.mbds.vamp.dashboardapp.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class User {
+public class User implements Serializable {
 
-    String surname;
-    String firstname;
-    Date birth;
+    String username;
+    String password;
+    String fullName;
+    Date bDay;
     String email;
     String tel;
-
+    Location homeAddress;
     Profile profile;
-    String role;
+    Car[] cars;
+    Media avatar;
 
 
     public User() {}
 
 
-    public String getSurname() {
-        return surname;
+    public String getUsername() {
+        return username;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getPassword() {
+        return password;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public Date getBirth() {
-        return birth;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setBirth(Date birth) {
-        this.birth = birth;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public Date getbDay() {
+        return bDay;
+    }
+
+    public void setbDay(Date bDay) {
+        this.bDay = bDay;
     }
 
     public String getEmail() {
@@ -57,6 +68,22 @@ public class User {
         this.tel = tel;
     }
 
+    public Media getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(Media avatar) {
+        this.avatar = avatar;
+    }
+
+    public Location getHomeAddress() {
+        return homeAddress;
+    }
+
+    public void setHomeAddress(Location homeAddress) {
+        this.homeAddress = homeAddress;
+    }
+
     public Profile getProfile() {
         return profile;
     }
@@ -65,11 +92,11 @@ public class User {
         this.profile = profile;
     }
 
-    public String getRole() {
-        return role;
+    public Car[] getCars() {
+        return cars;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setCars(Car[] cars) {
+        this.cars = cars;
     }
 }

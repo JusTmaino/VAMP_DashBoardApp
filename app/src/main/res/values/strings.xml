@@ -29,7 +29,7 @@
     <string name="home_brand">Marque</string>
     <string name="home_model">Modèle</string>
     <string name="home_charge">Taux de charge</string>
-
+    <string name="titleSpinner">Selectionner un profile</string>
     <!-- .ControlsFragment -->
     <string name="controls_commands">Commandes</string>
     <string name="controls_commands_start">Démarrer la voiture </string>

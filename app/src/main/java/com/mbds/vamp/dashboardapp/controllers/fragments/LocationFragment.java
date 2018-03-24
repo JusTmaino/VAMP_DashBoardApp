@@ -21,6 +21,7 @@ import android.view.ViewGroup;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -28,6 +29,10 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.mbds.vamp.dashboardapp.R;
+import com.mbds.vamp.dashboardapp.utils.ItineraireTask;
+
+import java.io.IOException;
+import java.util.ArrayList;
 
 
 public class LocationFragment extends Fragment implements OnMapReadyCallback {
@@ -35,6 +40,8 @@ public class LocationFragment extends Fragment implements OnMapReadyCallback {
     GoogleMap googleMap;
     MapView mapView;
     private static View view;
+    private GoogleMap gMap;
+    private final ArrayList<LatLng> lstLatLng = new ArrayList<LatLng>();
 
     @Nullable
     @Override
@@ -88,10 +95,32 @@ public class LocationFragment extends Fragment implements OnMapReadyCallback {
     public void onMapReady(GoogleMap googleMap) {
         MapsInitializer.initialize(getContext());
         this.googleMap = googleMap;
-        googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        googleMap.addMarker(new MarkerOptions().position(new LatLng(5.6, 77.6)).title("je suis la ").snippet("hello"));
-        CameraPosition liberty = CameraPosition.builder().target(new LatLng(5.60, 77.6)).zoom(20).bearing(0).tilt(45).build();
+        //GEOLOCALICATION DU VEHICUL
+        double latD = 43.6188256;
+        double lngD = 7.0570129999999835;
 
+        //ADRESSE DE L'UTILISATEUR
+        double latA = 43.606548;
+        double lngA = 7.123815199999967;
+
+        //LES POIS (POINT DE CHARGE) A RECUPERER DE L'API
+        lstLatLng.add(new LatLng(43.6172352,7.06450760000007));
+        lstLatLng.add(new LatLng(43.6171231 , 7.050360500000011));
+        lstLatLng.add(new LatLng(43.62277599999999, 7.058908200000019));
+        lstLatLng.add(new LatLng(43.6245433, 7.0614014000000225));
+        lstLatLng.add(new LatLng(43.6137472 , 7.058677699999976));
+        lstLatLng.add(new LatLng(43.6220652, 7.0626263000000336));
+        lstLatLng.add(new LatLng(43.62850100000001, 7.042699999999968));
+
+        //RECHERCHE DE L'ITINERAIRE
+        new ItineraireTask(getActivity().getApplicationContext(), this.googleMap, new LatLng(latD, lngD), new LatLng(latA, lngA),lstLatLng).execute();
+
+      /*  googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        googleMap.addMarker(new MarkerOptions().position(new LatLng(lat, lng)).title("Nice, France ").snippet("Latitude : "+lat +"| Longitude : "+lng));
+        CameraPosition liberty = CameraPosition.builder().target(new LatLng(lat, lng)).zoom(20).bearing(0).tilt(45).build();
+        float zoomLevel = 10.0f; //This goes up to 21
+
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(lat, lng), zoomLevel));
        /* if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -103,7 +132,7 @@ public class LocationFragment extends Fragment implements OnMapReadyCallback {
             return;
         }
         googleMap.setMyLocationEnabled(true);*/
-        googleMap.getUiSettings().setZoomControlsEnabled(true);
+       // googleMap.getUiSettings().setZoomControlsEnabled(true);
     }
 
 

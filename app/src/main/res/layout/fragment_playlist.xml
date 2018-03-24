@@ -1,17 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:id="@+id/detailsText2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal|center_vertical"
-        android:layout_marginTop="20dip"
-        android:text="PlayList"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="30dip" />
+    <LinearLayout
+        android:layout_width="740dp"
+        android:layout_height="85dp"
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="200dp"
+        tools:layout_editor_absoluteY="20dp">
 
-</LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/music_photo_list"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/musicnote" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="20dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:text="TITRE: "
+                    android:textColor="@color/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/music_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorAccent" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="5dp"
+                    android:text="AUTEUR: "
+                    android:textColor="@color/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/music_author"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorAccent" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="207dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/music_play"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/pause" />
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
