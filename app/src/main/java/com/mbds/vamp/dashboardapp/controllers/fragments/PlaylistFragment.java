@@ -51,6 +51,9 @@ public class PlaylistFragment extends Fragment {//implements AdapterView.OnItemS
     private List<Profile> userProfiles;
     private List<Media> userMedias;
     private ListView userMediaList;
+    private MediaPlayerService player;
+    boolean serviceBound = false;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -58,12 +61,7 @@ public class PlaylistFragment extends Fragment {//implements AdapterView.OnItemS
         return rootView;
     }
 
-    public void setText(String item) {
-        /*TextView view = (TextView) getView().findViewById(R.id.detailsText2);
-        view.setText(item);*/
-    }
-    private MediaPlayerService player;
-    boolean serviceBound = false;
+
 
     //Binding this Client to the AudioPlayer Service
     private ServiceConnection serviceConnection = new ServiceConnection() {
@@ -144,7 +142,6 @@ public class PlaylistFragment extends Fragment {//implements AdapterView.OnItemS
 
                                                 if (jsonArray != null) {
                                                     int len = jsonArray.length();
-                                                    System.out.println("la longueur de la playlist=="+playlistIds);
                                                     for (int i = 0; i < len; i++) {
                                                         // playlistsProfile[0] = (Playlist)jsonArray.get(0);
                                                         // playlistsProfile[i] = (Playlist)jsonArray.getJSONObject(i).get()
@@ -162,7 +159,6 @@ public class PlaylistFragment extends Fragment {//implements AdapterView.OnItemS
 
                                             AsyncHttpClient client4 = new AsyncHttpClient();
                                             client4.addHeader("X-Auth-Token", access_token);
-                                            System.out.println("playlistIds===>"+playlistIds);
                                             for (String id : playlistIds) {
 
                                                 client4.get(Config.PLAYLIST_URL + "/" + id + ".json", null, new JsonHttpResponseHandler() {
@@ -177,21 +173,14 @@ public class PlaylistFragment extends Fragment {//implements AdapterView.OnItemS
                                                             JSONArray jsonArray = playlist.getJSONArray("medias");
                                                             if (jsonArray != null) {
                                                                 int len = jsonArray.length();
-                                                                System.out.println("la longueur des media =="+mediaIds);
-                                                                for (int i = 0; i < len; i++) {
-                                                                    // playlistsProfile[0] = (Playlist)jsonArray.get(0);
-                                                                    // playlistsProfile[i] = (Playlist)jsonArray.getJSONObject(i).get()
 
-                                                                    System.out.println("userProfilesMedia==="+jsonArray.getJSONObject(i).get("id").toString());
+                                                                for (int i = 0; i < len; i++) {
                                                                     mediaIds.add(jsonArray.getJSONObject(i).get("id").toString());
                                                                 }
+
                                                                 AsyncHttpClient client5 = new AsyncHttpClient();
                                                                 client5.addHeader("X-Auth-Token", access_token);
-
-                                                                System.out.println("mediaIds====>"+playlistIds.size());
                                                                 for (String id : mediaIds) {
-                                                                    System.out.println("les urls sont "+Config.MEDIA_URL + "/" + id + ".json");
-
                                                                     client5.get(Config.MEDIA_URL + "/" + id + ".json", null, new JsonHttpResponseHandler() {
                                                                         @Override
                                                                         public void onSuccess(int statusCode, Header[] headers, JSONObject media) {
@@ -204,8 +193,6 @@ public class PlaylistFragment extends Fragment {//implements AdapterView.OnItemS
                                                                                 String urlMedia = media.getString("url");
 
                                                                                 urlMediaList.add(urlMedia);
-
-
                                                                                 for (int i=0 ; i < profileIds.size() ; i++)
                                                                                 {
                                                                                     HashMap<String,String> hashMap=new HashMap<>();//create a hashmap to store the data in key value pair
@@ -213,9 +200,6 @@ public class PlaylistFragment extends Fragment {//implements AdapterView.OnItemS
                                                                                     hashMap.put("music_author","1");
                                                                                     mapList.add(hashMap);//add the hashmap into arrayList
                                                                                 }
-                                                                                System.out.println("le taile de la map est "+mapList.size());
-                                                                                System.out.println("l'url du media==="+urlMediaList.size());
-                                                                                //   playAudio("http://192.168.43.247:80/images/media/Grieg_Lyric_Pieces_Kobold.ogg");
                                                                                 ListAdapter listAdapter = new SimpleAdapter(
                                                                                         getActivity().getApplicationContext(),mapList,
                                                                                         R.layout.fragment_playlist,
@@ -225,8 +209,8 @@ public class PlaylistFragment extends Fragment {//implements AdapterView.OnItemS
                                                                                 userMediaList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                                                                     @Override
                                                                                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                                                                        System.out.println("coucouuuuuuuuuuuuuu!!!!!!!!!!!!");
                                                                                         playAudio("https://upload.wikimedia.org/wikipedia/commons/6/6c/Grieg_Lyric_Pieces_Kobold.ogg");
+                                                                                        //playAudio("http://192.168.43.247:80/images/media/"+urlMedia);
                                                                                     }
                                                                                 });
 
@@ -253,7 +237,6 @@ public class PlaylistFragment extends Fragment {//implements AdapterView.OnItemS
                                                         Log.d("onFailure : ", String.valueOf(statusCode));
                                                     }
                                                 });
-                                                System.out.println("size of media List===>"+urlMediaList.size());
                                             }
 
 
@@ -268,7 +251,6 @@ public class PlaylistFragment extends Fragment {//implements AdapterView.OnItemS
                                 }
 
                             }
-                            ArrayList<String> urlMediaList = new ArrayList<>();
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();

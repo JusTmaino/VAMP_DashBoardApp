@@ -87,6 +87,7 @@ public class ProfileFragment extends Fragment {
                                 lastnameTV.setText(loggedUser.getUsername());
                                 emailTV.setText(loggedUser.getEmail());
                                 phoneTV.setText(loggedUser.getTel());
+                                addressTV.setText("Route de Nice");
                                 //TODO address
                                 // addressTV.setText(loggedUser.get);
 
